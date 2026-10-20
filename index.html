@@ -4,895 +4,500 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adnan Munir — Digital Image Forensics Researcher</title>
-  
-  <!-- Google Fonts: Fraunces & Merriweather for warm academic serif titles, Inter for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-cream: #fcf8ec;         /* Warm cream background from screenshot */
-      --bg-card: #f5eed6;          /* Soft tinted cream for contact card */
-      --bg-card-border: #e6dec1;   /* Subtle boundary */
-      --nav-olive: #4c5d35;        /* Deep olive green top bar */
-      --nav-olive-dark: #3e4d2b;
-      --text-ink: #2b2b28;         /* Deep readable charcoal */
-      --text-muted: #5e5e54;       /* Balanced subtitle grey */
-      --accent-green: #48612f;     /* Section accents */
-      --accent-warm: #a6582d;      /* Warm rust for links / hover */
-      --tag-bg: #efe8d0;
-      --border-line: #dfd8be;
+      --bg: #fbf7ee;
+      --card-bg: #f4ecdc;
+      --header-bg: #4a5d38;
+      --header-text: #ffffff;
+      --ink: #1f231b;
+      --ink-soft: #383e33;
+      --muted: #6e7566;
+      --line: #ded7c6;
+      --accent: #8b3d22;
+      --accent-hover: #b84a22;
+      --tag-bg: #ece4d2;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; }
 
     html, body {
-      background-color: var(--bg-cream);
-      color: var(--text-ink);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 15.5px;
-      line-height: 1.65;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 16.5px;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      scroll-behavior: smooth;
     }
 
-    a {
-      color: var(--accent-warm);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-thickness: 1px;
-      transition: color 0.15s ease, text-decoration-color 0.15s ease;
-    }
-    a:hover {
-      color: #7b3913;
-      text-decoration-color: #7b3913;
-    }
-
-    .wrap {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    /* ---------- NAVIGATION BAR ---------- */
-    .top-nav {
-      background-color: var(--nav-olive);
-      color: #ffffff;
+    /* Top Sticky Navigation Bar */
+    header.site-header {
+      background-color: var(--header-bg);
       position: sticky;
       top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
-    .top-nav .wrap {
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 24px;
       display: flex;
       justify-content: center;
-      align-items: center;
-      padding-top: 14px;
-      padding-bottom: 14px;
+      gap: 28px;
+      flex-wrap: wrap;
     }
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .nav-links::-webkit-scrollbar {
-      display: none;
-    }
-    .nav-links a {
-      color: #f7f9f2;
+    .nav-container a {
+      color: var(--header-text);
       text-decoration: none;
-      font-family: 'Merriweather', Georgia, serif;
-      font-size: 14.5px;
-      font-weight: 700;
+      font-family: 'Newsreader', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
       letter-spacing: 0.3px;
-      transition: opacity 0.15s ease, transform 0.15s ease;
-      white-space: nowrap;
+      transition: opacity 0.2s;
     }
-    .nav-links a:hover {
-      color: #ffffff;
-      opacity: 0.85;
+    .nav-container a:hover {
+      opacity: 0.8;
       text-decoration: underline;
-      text-underline-offset: 5px;
     }
 
-    /* ---------- HERO 3-COLUMN LAYOUT ---------- */
-    .hero-section {
-      padding: 48px 0 38px 0;
+    /* Main Container */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
     }
+
+    /* 3-Column Hero Section */
     .hero-grid {
       display: grid;
-      grid-template-columns: 290px 1.55fr 250px;
-      gap: 34px;
+      grid-template-columns: 240px 1fr 260px;
+      gap: 36px;
       align-items: start;
+      margin-bottom: 50px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
     }
 
     /* Column 1: Portrait */
-    .hero-photo-wrap {
-      width: 100%;
-      border-radius: 6px;
-      overflow: hidden;
-      background: #dfd8be;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    .hero-photo-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
     .hero-photo {
       width: 100%;
-      height: 310px;
+      max-width: 240px;
+      height: auto;
+      aspect-ratio: 4 / 5;
       object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       display: block;
-    }
-    .photo-caption {
-      font-size: 11.5px;
-      color: var(--text-muted);
-      margin-top: 6px;
-      text-align: center;
-      font-family: 'JetBrains Mono', monospace;
     }
 
     /* Column 2: Bio */
-    .hero-bio h1 {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 2.25rem;
+    .hero-bio-col h1 {
+      font-family: 'Newsreader', serif;
+      font-size: 2.2rem;
       font-weight: 700;
-      color: #3b4c27; /* Rich dark olive */
-      line-height: 1.15;
-      margin-bottom: 18px;
-      letter-spacing: -0.015em;
+      margin: 0 0 16px;
+      color: #2b3621;
+      letter-spacing: -0.02em;
     }
-    .hero-bio p {
-      margin-bottom: 14px;
-      color: #333330;
+    .hero-bio-col p {
+      margin: 0 0 16px;
+      color: var(--ink-soft);
       text-align: justify;
-      font-size: 15.5px;
     }
-    .hero-bio .highlight {
-      color: #2b3b19;
-      font-weight: 600;
+    .hero-bio-col a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .hero-bio-col a:hover {
+      color: var(--accent-hover);
     }
 
-    /* Column 3: Contact Floating Card */
+    /* Column 3: Contact Card */
     .contact-card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--bg-card-border);
-      border-radius: 18px;
+      background-color: var(--card-bg);
+      border-radius: 12px;
       padding: 24px 22px;
-      box-shadow: 0 2px 10px rgba(76, 93, 53, 0.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.05);
     }
-    .contact-card h3 {
-      font-family: 'Fraunces', Georgia, serif;
+    .contact-card h2 {
+      font-family: 'Newsreader', serif;
       font-size: 1.35rem;
       font-weight: 700;
-      color: #945324; /* Warm burnt ochre title */
-      margin-bottom: 14px;
+      margin: 0 0 14px;
+      color: var(--accent);
     }
     .contact-card p {
-      font-size: 13.5px;
-      color: #44433c;
+      margin: 0 0 10px;
+      font-size: 14.5px;
       line-height: 1.5;
-      margin-bottom: 12px;
+      color: var(--ink-soft);
     }
-    .contact-card .affiliation-title {
-      font-weight: 600;
-      color: #242422;
-      margin-bottom: 2px;
-    }
-    .contact-card .email-block {
-      margin-top: 14px;
-      font-size: 13.5px;
-    }
-    .contact-card .email-link {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12.5px;
+    .contact-card .email {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      color: var(--accent);
       word-break: break-all;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 6px;
     }
-    .contact-links {
-      list-style: none;
-      margin-top: 14px;
-      padding-top: 12px;
-      border-top: 1px dashed var(--bg-card-border);
+    .contact-card .social-links {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
       display: flex;
       flex-direction: column;
       gap: 6px;
-      font-size: 13px;
+      font-size: 14px;
     }
-    .contact-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 500;
+    .contact-card .social-links a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .contact-card .social-links a:hover {
+      color: var(--accent);
+      text-decoration: underline;
     }
 
-    /* ---------- COMMON SECTION STYLING ---------- */
+    /* General Section Styling */
     section {
-      padding: 38px 0;
+      margin-bottom: 50px;
     }
-    .section-heading {
-      font-family: 'Fraunces', Georgia, serif;
+    h2.section-heading {
+      font-family: 'Newsreader', serif;
       font-size: 1.7rem;
       font-weight: 700;
-      color: #3b4c27;
-      margin-bottom: 20px;
+      color: #2b3621;
+      margin: 0 0 22px;
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-    .section-heading::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--border-line);
-      margin-left: 8px;
+      gap: 10px;
     }
 
-    /* ---------- NEWS SECTION ---------- */
+    /* News Feed */
     .news-list {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 13px;
+      padding: 0;
+      margin: 0;
     }
-    .news-item {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-    .news-bullet {
-      flex-shrink: 0;
-      width: 14px;
-      height: 14px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234c5d35'%3E%3Cpath d='M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A9.49 9.49 0 0 0 20 10.5V7a1 1 0 0 0-1-1h-2m-3 8c-3.15 0-5.75-2.5-5.75-5.5S10.85 5 14 5c.4 0 .78.05 1.16.14A8.7 8.7 0 0 0 14 1a10 10 0 0 0-10 10c0 4.18 2.56 7.76 6.2 9.25C9.74 18.5 9 16.34 9 14a5 5 0 0 1 5-5v5z'/%3E%3C/svg%3E");
-      background-size: contain;
-      background-repeat: no-repeat;
-      display: inline-block;
+    .news-list li {
       position: relative;
-      top: 2px;
+      padding-left: 26px;
+      margin-bottom: 14px;
+      font-size: 15.5px;
+      color: var(--ink-soft);
+    }
+    .news-list li::before {
+      content: '🌱';
+      position: absolute;
+      left: 0;
+      top: 1px;
+      font-size: 14px;
     }
     .news-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12.5px;
+      font-family: 'IBM Plex Mono', monospace;
       font-weight: 600;
-      color: #8c471d;
-      background: #f4ecda;
-      padding: 1px 7px;
-      border-radius: 4px;
-      border: 1px solid #e5dcbe;
-      flex-shrink: 0;
+      color: var(--accent);
+      margin-right: 6px;
+      font-size: 13.5px;
     }
-    .news-content {
-      color: #2e2e2a;
+    .news-list a {
+      color: var(--accent);
+      text-decoration: underline;
     }
 
-    /* ---------- PUBLICATIONS SECTION ---------- */
-    .pub-list {
-      list-style: none;
+    /* Publications */
+    .pub-item {
+      margin-bottom: 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px dashed var(--line);
+    }
+    .pub-item:last-child {
+      border-bottom: none;
+    }
+    .pub-badges {
       display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    .pub-card {
-      background: #fbf7ea;
-      border: 1px solid var(--border-line);
-      border-left: 4px solid var(--nav-olive);
-      padding: 16px 20px;
-      border-radius: 0 6px 6px 0;
-      transition: box-shadow 0.15s ease, transform 0.15s ease;
-    }
-    .pub-card:hover {
-      box-shadow: 0 4px 12px rgba(76, 93, 53, 0.08);
-      transform: translateY(-1px);
-    }
-    .pub-meta {
-      display: flex;
+      gap: 8px;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 6px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      font-weight: 600;
+      margin-bottom: 4px;
     }
-    .pub-year {
-      color: #6d6c62;
-    }
-    .pub-venue-badge {
-      background-color: var(--nav-olive);
-      color: #ffffff;
-      padding: 2px 8px;
-      border-radius: 3px;
+    .badge {
+      font-family: 'IBM Plex Mono', monospace;
       font-size: 11.5px;
-      letter-spacing: 0.3px;
+      font-weight: 700;
+      padding: 2px 7px;
+      background: var(--tag-bg);
+      color: var(--ink-soft);
+      border-radius: 3px;
     }
-    .pub-venue-badge.q1 {
-      background-color: #9c4b18;
+    .badge-q1 {
+      background: #e27d60;
+      color: #fff;
     }
     .pub-title {
-      font-family: 'Merriweather', Georgia, serif;
-      font-size: 1.05rem;
       font-weight: 700;
-      color: #21211e;
-      margin-bottom: 6px;
-      line-height: 1.45;
+      font-size: 1.05rem;
+      margin: 2px 0 4px;
+      color: var(--ink);
     }
     .pub-authors {
-      font-size: 14px;
-      color: var(--text-muted);
+      font-size: 14.5px;
+      color: var(--muted);
+      margin: 0;
     }
-    .pub-authors .author-self {
-      font-weight: 700;
-      color: #242e18;
+    .pub-authors a {
+      color: var(--ink-soft);
       text-decoration: underline;
-      text-decoration-thickness: 1.5px;
     }
 
-    /* Collapsible publications toggle */
-    .pub-accordion {
-      margin-top: 22px;
-    }
-    .pub-accordion summary {
-      cursor: pointer;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13.5px;
-      font-weight: 700;
-      color: var(--nav-olive);
-      background: var(--bg-card);
-      padding: 12px 18px;
-      border-radius: 6px;
-      border: 1px solid var(--border-line);
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      user-select: none;
-      transition: background 0.15s ease;
-    }
-    .pub-accordion summary:hover {
-      background: #ede4c7;
-    }
-    .pub-accordion summary::-webkit-details-marker {
-      display: none;
-    }
-    .pub-accordion summary::before {
-      content: "▸";
-      display: inline-block;
-      transition: transform 0.2s ease;
-      font-size: 14px;
-    }
-    .pub-accordion[open] summary::before {
-      transform: rotate(90deg);
-    }
-    .pub-accordion .pub-list {
-      margin-top: 16px;
-    }
-
-    /* ---------- RESEARCH FOCUS AREAS ---------- */
-    .tags-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .research-tag {
-      background: var(--bg-card);
-      border: 1px solid var(--border-line);
-      color: #3b4c27;
-      padding: 7px 14px;
-      border-radius: 20px;
-      font-size: 13.5px;
-      font-weight: 600;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-    }
-
-    /* ---------- EXPERIENCE TIMELINE ---------- */
+    /* Timeline */
     .timeline {
       list-style: none;
-      position: relative;
-      padding-left: 24px;
-      border-left: 2px solid var(--border-line);
-      margin-left: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
+      padding-left: 18px;
+      border-left: 2px solid var(--line);
+      margin: 0;
     }
-    .timeline-item {
+    .tl-item {
       position: relative;
+      margin-bottom: 22px;
     }
-    .timeline-item::before {
-      content: "";
+    .tl-item::before {
+      content: '';
       position: absolute;
-      left: -31px;
+      left: -23px;
       top: 6px;
-      width: 12px;
-      height: 12px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: var(--bg-cream);
-      border: 3px solid var(--nav-olive);
+      background: var(--accent);
     }
-    .timeline-date {
-      font-family: 'JetBrains Mono', monospace;
+    .tl-year {
+      font-family: 'IBM Plex Mono', monospace;
       font-size: 12px;
-      font-weight: 600;
-      color: #9c4b18;
+      font-weight: 700;
+      color: var(--accent);
       margin-bottom: 2px;
     }
-    .timeline-role {
-      font-family: 'Merriweather', Georgia, serif;
+    .tl-role {
       font-weight: 700;
-      font-size: 1.05rem;
-      color: #252e18;
+      font-size: 15px;
+      margin: 0 0 2px;
     }
-    .timeline-org {
-      font-weight: 600;
-      color: var(--text-muted);
+    .tl-org {
       font-size: 13.5px;
-      margin-bottom: 4px;
-    }
-    .timeline-desc {
-      font-size: 14px;
-      color: #40403a;
-      line-height: 1.55;
+      color: var(--muted);
+      margin: 0;
     }
 
-    /* ---------- HONOURS & AWARDS ---------- */
-    .honours-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 14px;
-    }
-    .honour-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-line);
-      border-radius: 8px;
-      padding: 14px 18px;
-    }
-    .honour-title {
-      font-weight: 700;
-      color: #2b3917;
-      font-size: 14.5px;
-      margin-bottom: 4px;
-    }
-    .honour-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    /* ---------- FOOTER ---------- */
-    footer {
-      background-color: var(--nav-olive-dark);
-      color: #f0f3eb;
-      padding: 34px 0 28px;
-      margin-top: 50px;
-      border-top: 1px solid #374426;
-      font-size: 13.5px;
-    }
-    footer a {
-      color: #e5deb8;
-      text-decoration: underline;
-    }
-    footer a:hover {
-      color: #ffffff;
-    }
-    .footer-content {
+    /* Research Tags */
+    .tag-cluster {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 8px;
+    }
+    .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      background: var(--card-bg);
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      color: var(--ink);
     }
 
-    /* ---------- RESPONSIVE BREAKPOINTS ---------- */
-    @media (max-width: 980px) {
-      .hero-grid {
-        grid-template-columns: 240px 1fr;
-        gap: 26px;
-      }
-      .contact-card {
-        grid-column: span 2;
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 680px) {
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
       }
-      .hero-photo-wrap {
-        max-width: 280px;
-        margin: 0 auto;
+      .hero-photo {
+        max-width: 200px;
       }
       .contact-card {
-        grid-column: span 1;
-      }
-      .nav-links {
-        gap: 20px;
-        justify-content: flex-start;
-      }
-      .hero-bio h1 {
-        font-size: 1.85rem;
-      }
-      .section-heading {
-        font-size: 1.45rem;
-      }
-      .wrap {
-        padding: 0 18px;
-      }
-      .news-item {
-        flex-wrap: wrap;
-        gap: 6px;
+        margin-top: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ================= TOP NAVIGATION BAR ================= -->
-  <header class="top-nav">
-    <div class="wrap">
-      <nav aria-label="Main Navigation">
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#news">News</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#experience">CV &amp; Experience</a></li>
-          <li><a href="#honours">Honours</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+  <!-- Top Sticky Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="#about">Home</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
     </div>
   </header>
 
-  <main class="wrap">
+  <div class="container">
 
-    <!-- ================= HERO 3-COLUMN SECTION ================= -->
-    <section class="hero-section" id="home">
-      <div class="hero-grid">
-
-        <!-- Column 1: Portrait / Photo -->
-        <div class="hero-photo-col">
-          <div class="hero-photo-wrap">
-            <!-- Professional researcher photo placeholder; replace src with your headshot URL if desired -->
-<!-- Clean version without the redundant fallback -->
-<img 
-  class="hero-photo" 
-  src="./profile.jpeg" 
-  alt="Portrait of Adnan Munir"
-/>
-
-        <!-- Column 2: Bio & Description -->
-        <div class="hero-bio">
-          <h1>Adnan Munir</h1>
-          
-          <p>
-            Hi! I am a doctoral researcher in <span class="highlight">Digital Image Forensics</span> and Computer Vision. My research focuses on Vision-Language Models (VLMs), deepfake forensics, and developing robust multi-scale architectures to expose, localize, and explain subtle image manipulations.
-          </p>
-          
-          <p>
-            Currently, I am pursuing my PhD in the Department of Electrical Engineering (ISY), Information Coding Division at <span class="highlight">Linköping University</span> in Sweden, fully funded by the <a href="https://wasp-sweden.org/" target="_blank" rel="noopener">Wallenberg AI, Autonomous Systems and Software Program (WASP)</a>, where I also serve as a Teaching Assistant.
-          </p>
-
-          <p>
-            Prior to joining Linköping University, I spent 2021–2025 as a Graduate Research &amp; Teaching Assistant at the King Fahd University of Petroleum and Minerals (<a href="https://www.kfupm.edu.sa/" target="_blank" rel="noopener">KFUPM</a>), Saudi Arabia, and worked as a Computer Vision R&amp;D Engineer at E-Wall.
-          </p>
-        </div>
-
-        <!-- Column 3: Floating Soft-Cream Contact Card -->
-        <aside class="contact-card" id="contact" aria-label="Contact Information">
-          <h3>Contact</h3>
-          
-          <p class="affiliation-title"><strong>Adnan Munir</strong></p>
-          <p>
-            Division of Information Coding<br>
-            Department of Electrical Engineering (ISY)<br>
-            Linköping University<br>
-            581 83 Linköping, Sweden
-          </p>
-
-          <div class="email-block">
-            <strong>Email:</strong><br>
-            <a class="email-link" href="mailto:adnanmunir294@gmail.com">adnanmunir294@gmail.com</a>
-          </div>
-
-          <ul class="contact-links">
-            <li><a href="https://scholar.google.com/citations?user=ywcL21UAAAAJ&hl=en" target="_blank" rel="noopener">📚 Google Scholar</a></li>
-            <li><a href="https://www.linkedin.com/in/adnan-m-84b65b164/" target="_blank" rel="noopener">💼 LinkedIn Profile</a></li>
-            <li><a href="https://github.com/AdnanMunir338" target="_blank" rel="noopener">💻 GitHub Repository</a></li>
-            <li><a href="https://www.youtube.com/@AdnanMunirkhokhar" target="_blank" rel="noopener">▶️ YouTube Channel</a></li>
-            <li><a href="https://esacadnanmunir.blogspot.com/" target="_blank" rel="noopener">✍️ Personal Blog</a></li>
-          </ul>
-        </aside>
-
+    <!-- 3-Column Top Hero Grid -->
+    <div class="hero-grid" id="about">
+      
+      <!-- Column 1: Image -->
+      <div class="hero-photo-col">
+        <img 
+          class="hero-photo" 
+          src="./profile.jpeg" 
+          alt="Portrait of Adnan Munir"
+        />
       </div>
-    </section>
 
-    <!-- ================= NEWS SECTION ================= -->
+      <!-- Column 2: Bio -->
+      <div class="hero-bio-col">
+        <h1>Adnan Munir</h1>
+        <p>
+          Hi! I am a doctoral researcher in <strong>Digital Image Forensics and Computer Vision</strong>. My research focuses on Vision-Language Models (VLMs), deepfake forensics, and developing robust multi-scale architectures to expose, localize, and explain subtle image manipulations.
+        </p>
+        <p>
+          Currently, I am pursuing my PhD in the Department of Electrical Engineering (ISY), Information Coding Division at <strong>Linköping University</strong> in Sweden, funded by the <a href="https://wasp-sweden.org/" target="_blank" rel="noopener">Wallenberg AI, Autonomous Systems and Software Program (WASP)</a>.
+        </p>
+        <p>
+          Prior to this, I was a Research Assistant at <strong>King Fahd University of Petroleum and Minerals (KFUPM)</strong> where I earned my M.S. in Computer Engineering, and a Computer Vision R&amp;D Engineer at E-Wall.
+        </p>
+      </div>
+
+      <!-- Column 3: Contact Card -->
+      <div class="contact-card" id="contact">
+        <h2>Contact</h2>
+        <p>
+          <strong>Adnan Munir</strong><br>
+          Department of Electrical Engineering (ISY)<br>
+          Linköping University<br>
+          Linköping, Sweden
+        </p>
+        <a class="email" href="mailto:adnanmunir294@gmail.com">adnanmunir294@gmail.com</a>
+
+        <div class="social-links">
+          <a href="https://scholar.google.com/citations?user=ywcL21UAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+          <a href="https://www.linkedin.com/in/adnan-m-84b65b164/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://github.com/AdnanMunir338" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://esacadnanmunir.blogspot.com/" target="_blank" rel="noopener">Blog ↗</a>
+          <a href="https://www.youtube.com/@AdnanMunirkhokhar" target="_blank" rel="noopener">YouTube ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- News Section -->
     <section id="news">
       <h2 class="section-heading">News</h2>
       <ul class="news-list">
-        <li class="news-item">
-          <span class="news-bullet" aria-hidden="true"></span>
-          <span class="news-date">2026-10</span>
-          <span class="news-content">
-            Excited to share that our paper <strong>"BUFF-Net: Boundary–Uncertainty Guided Multi-Scale Refinement Network with Frozen Forensic Priors for Image Manipulation Detection and Localization"</strong> has been accepted at <strong>WACV 2027</strong>! 🎉📄
-          </span>
+        <li>
+          <span class="news-date">2026-10</span> Our paper <strong>"BUFF-Net: Boundary–Uncertainty Guided Multi-Scale Refinement Network with Frozen Forensic Priors for Image Manipulation Detection and Localization"</strong> has been accepted at <strong>WACV 2027</strong>! 🎉
         </li>
-
-        <li class="news-item">
-          <span class="news-bullet" aria-hidden="true"></span>
-          <span class="news-date">2026-10</span>
-          <span class="news-content">
-            Completed a research study trip across Paris and Rennes organized by <strong>WASP</strong>! Read more on my <a href="https://esacadnanmunir.blogspot.com/2026/10/wasp-research-trip-to-france-root.html" target="_blank" rel="noopener noreferrer">blog post</a>. 🇫🇷✈️
-          </span>
+        <li>
+          <span class="news-date">2026-10</span> Completed a research study trip across Paris and Rennes organized by <strong>WASP</strong>! Read more on my <a href="https://esacadnanmunir.blogspot.com/2026/10/wasp-research-trip-to-france-root.html" target="_blank" rel="noopener">blog post</a>. 🇫🇷✈️
         </li>
-
-        <li class="news-item">
-          <span class="news-bullet" aria-hidden="true"></span>
-          <span class="news-date">2026-09</span>
-          <span class="news-content">
-            Paper <strong>"TraCE: Transformer-based Forensic Cue and Evidence Modulation for Image Forgery Detection and Localization"</strong> accepted at <em>BMVC 2026</em>! 🎊
-          </span>
+        <li>
+          <span class="news-date">2026-09</span> Paper <strong>"TraCE: Transformer-based Forensic Cue and Evidence Modulation for Image Forgery Detection and Localization"</strong> accepted at <em>BMVC 2026</em>!
         </li>
-
-        <li class="news-item">
-          <span class="news-bullet" aria-hidden="true"></span>
-          <span class="news-date">2026-08</span>
-          <span class="news-content">
-            Attended the <a href="https://esacadnanmunir.blogspot.com/2026/09/wasp-summer-school-and-industry-visit.html" target="_blank" rel="noopener">WASP Summer School and Industry Visit</a> in Linköping — five inspiring days with 80+ AI researchers, visiting NAISS, SICK, Ericsson, and Visualiseringscenter C.
-          </span>
+        <li>
+          <span class="news-date">2026-08</span> Attended the <a href="https://esacadnanmunir.blogspot.com/2026/09/wasp-summer-school-and-industry-visit.html" target="_blank" rel="noopener">WASP Summer School and Industry Visit</a> in Linköping — five days visiting NAISS, SICK, Ericsson, and Visualiseringscenter C.
         </li>
-
-        <li class="news-item">
-          <span class="news-bullet" aria-hidden="true"></span>
-          <span class="news-date">2026-04</span>
-          <span class="news-content">
-            Our research on medical imaging <strong>"DAUNet: A Lightweight UNet Variant"</strong> accepted in the <em>IEEE Journal of Biomedical and Health Informatics (Q1)</em>.
-          </span>
+        <li>
+          <span class="news-date">2026-04</span> Paper "DAUNet" accepted in <em>IEEE Journal of Biomedical and Health Informatics</em>.
         </li>
       </ul>
     </section>
 
-    <!-- ================= PUBLICATIONS SECTION ================= -->
+    <!-- Publications Section -->
     <section id="publications">
       <h2 class="section-heading">Selected Publications</h2>
       
-      <ul class="pub-list">
-        <!-- New Paper WACV 2027 -->
-        <li class="pub-card">
-          <div class="pub-meta">
-            <span class="pub-year">2027</span>
-            <span class="pub-venue-badge">WACV 2027</span>
-          </div>
-          <h3 class="pub-title">BUFF-Net: Boundary–Uncertainty Guided Multi-Scale Refinement Network with Frozen Forensic Priors for Image Manipulation Detection and Localization</h3>
-          <p class="pub-authors">
-            <span class="author-self">Munir, A.</span>, 
-            <a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank" rel="noopener">Mohaoui, S.</a>, 
-            <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank" rel="noopener">Chang, S.</a>
-          </p>
-        </li>
+      <div class="pub-item">
+        <div class="pub-badges">
+          <span class="badge">2027</span>
+          <span class="badge">WACV 2027</span>
+        </div>
+        <div class="pub-title">BUFF-Net: Boundary–Uncertainty Guided Multi-Scale Refinement Network with Frozen Forensic Priors for Image Manipulation Detection and Localization</div>
+        <p class="pub-authors"><strong>Munir, A.</strong>, <a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank">Mohaoui, S.</a>, <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank">Chang, S.</a></p>
+      </div>
 
-        <!-- BMVC 2026 -->
-        <li class="pub-card">
-          <div class="pub-meta">
-            <span class="pub-year">2026</span>
-            <span class="pub-venue-badge">BMVC 2026</span>
-          </div>
-          <h3 class="pub-title">TraCE: Transformer-based Forensic Cue and Evidence Modulation for Image Forgery Detection and Localization</h3>
-          <p class="pub-authors">
-            <a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank" rel="noopener">Mohaoui, S.</a>, 
-            <span class="author-self">Munir, A.</span>, 
-            <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank" rel="noopener">Chang, S.</a>
-          </p>
-        </li>
+      <div class="pub-item">
+        <div class="pub-badges">
+          <span class="badge">2026</span>
+          <span class="badge">BMVC 2026</span>
+        </div>
+        <div class="pub-title">TraCE: Transformer-based Forensic Cue and Evidence Modulation for Image Forgery Detection and Localization</div>
+        <p class="pub-authors"><a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank">Mohaoui, S.</a>, <strong>Munir, A.</strong>, <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank">Chang, S.</a></p>
+      </div>
 
-        <!-- IEEE JBHI 2026 -->
-        <li class="pub-card">
-          <div class="pub-meta">
-            <span class="pub-year">2026</span>
-            <span class="pub-venue-badge q1">IEEE JBHI · Q1</span>
-          </div>
-          <h3 class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11481615" target="_blank" rel="noopener">DAUNet: A Lightweight UNet Variant with Deformable Convolutions and Parameter-Free Attention for Medical Image Segmentation</a></h3>
-          <p class="pub-authors"><span class="author-self">Munir, A.</span>, Jabbar, M. S., Khan, S.</p>
-        </li>
+      <div class="pub-item">
+        <div class="pub-badges">
+          <span class="badge">2026</span>
+          <span class="badge">IEEE JBHI</span>
+          <span class="badge badge-q1">Q1</span>
+        </div>
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11481615" target="_blank" style="color: inherit; text-decoration: underline;">DAUNet: A Lightweight UNet Variant with Deformable Convolutions and Parameter-Free Attention for Medical Image Segmentation</a></div>
+        <p class="pub-authors"><strong>Munir, A.</strong>, Jabbar, M. S., Khan, S.</p>
+      </div>
 
-        <!-- IEEE T-ITS 2025 -->
-        <li class="pub-card">
-          <div class="pub-meta">
-            <span class="pub-year">2025</span>
-            <span class="pub-venue-badge q1">IEEE T-ITS · Q1</span>
-          </div>
-          <h3 class="pub-title"><a href="https://ieeexplore.ieee.org/document/10976436" target="_blank" rel="noopener">YOLO-RAW: Advancing UAV Detection with Robustness to Adverse Weather Conditions</a></h3>
-          <p class="pub-authors"><span class="author-self">Munir, A.</span>, Siddiqui, A. J., Hossain, M. S., El-Maleh, A.</p>
-        </li>
-
-        <!-- BIBE / ICBB 2025 -->
-        <li class="pub-card">
-          <div class="pub-meta">
-            <span class="pub-year">2025</span>
-            <span class="pub-venue-badge">IEEE BIBE / ICBB</span>
-          </div>
-          <h3 class="pub-title"><a href="https://doi.org/10.1109/BIBE66822.2025.00044" target="_blank" rel="noopener">Deployable Ultrasound Segmentation via Deformable Attention-Enhanced UNet</a></h3>
-          <p class="pub-authors"><span class="author-self">Munir, A.</span>, Khan, S.</p>
-        </li>
-      </ul>
-
-      <!-- Collapsible Full Archive -->
-      <details class="pub-accordion">
-        <summary>View Complete Publication Archive (+6 more articles)</summary>
-        <ul class="pub-list">
-          <li class="pub-card">
-            <div class="pub-meta">
-              <span class="pub-year">2024</span>
-              <span class="pub-venue-badge q1">Drones · Q1</span>
-            </div>
-            <h3 class="pub-title"><a href="https://doi.org/10.3390/drones8110638" target="_blank" rel="noopener">Impact of Adverse Weather and Image Distortions on Vision-based UAV Detection: A Performance Evaluation of Deep Learning Models</a></h3>
-            <p class="pub-authors"><span class="author-self">Munir, A.</span>, Siddiqui, A. J., Anwar, S., Khan, A. H., Rehman, A.</p>
-          </li>
-
-          <li class="pub-card">
-            <div class="pub-meta">
-              <span class="pub-year">2024</span>
-              <span class="pub-venue-badge">DICTA 2024</span>
-            </div>
-            <h3 class="pub-title"><a href="https://ieeexplore.ieee.org/document/10869593" target="_blank" rel="noopener">DustRobust-YOLO: Enhanced UAV Detection in Dusty Conditions</a></h3>
-            <p class="pub-authors"><span class="author-self">Munir, A.</span>, Alsabbagh, A., Siddiqui, A. J.</p>
-          </li>
-
-          <li class="pub-card">
-            <div class="pub-meta">
-              <span class="pub-year">2024</span>
-              <span class="pub-venue-badge">WACV Workshop</span>
-            </div>
-            <h3 class="pub-title"><a href="https://ieeexplore.ieee.org/document/10495594" target="_blank" rel="noopener">Investigation of UAV Detection in Images with Complex Backgrounds and Rainy Artifacts</a></h3>
-            <p class="pub-authors"><span class="author-self">Munir, A.</span>, Siddiqui, A. J., Anwar, S.</p>
-          </li>
-
-          <li class="pub-card">
-            <div class="pub-meta">
-              <span class="pub-year">2024</span>
-              <span class="pub-venue-badge">Sensors · Q2</span>
-            </div>
-            <h3 class="pub-title"><a href="https://doi.org/10.3390/s24227259" target="_blank" rel="noopener">R-RDSP: Reliable and Rapidly Deployable Wireless Ad Hoc System for Post-Disaster Management over DDS</a></h3>
-            <p class="pub-authors">Jan, B., <span class="author-self">Munir, A.</span>, Khan, A. H., Khan, A., Al-Madani, B. M.</p>
-          </li>
-
-          <li class="pub-card">
-            <div class="pub-meta">
-              <span class="pub-year">2025</span>
-              <span class="pub-venue-badge">IoT (MDPI)</span>
-            </div>
-            <h3 class="pub-title"><a href="https://doi.org/10.3390/iot6040070" target="_blank" rel="noopener">Lightweight Quantized XGBoost for Botnet Detection in Resource-Constrained IoT Networks</a></h3>
-            <p class="pub-authors">Rauf Ali Khan, M., Barnawi, A. Y., <span class="author-self">Munir, A.</span>, Alsalman, Z., Satan Sanunga, D. M.</p>
-          </li>
-
-          <li class="pub-card">
-            <div class="pub-meta">
-              <span class="pub-year">2020</span>
-              <span class="pub-venue-badge">Sensors · Q2</span>
-            </div>
-            <h3 class="pub-title"><a href="https://doi.org/10.3390/s20020548" target="_blank" rel="noopener">RDSP: Rapidly Deployable Wireless Ad Hoc System for Post-Disaster Management</a></h3>
-            <p class="pub-authors">Khan, A., <span class="author-self">Munir, A.</span>, Kaleem, Z., Muhammad, F. U., Nkenyereye, L., Shah, S., Nguyen, L. D., Islam, S. M. R., Kwak, K.-S.</p>
-          </li>
-        </ul>
-      </details>
+      <div class="pub-item">
+        <div class="pub-badges">
+          <span class="badge">2025</span>
+          <span class="badge">IEEE T-ITS</span>
+          <span class="badge badge-q1">Q1</span>
+        </div>
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10976436" target="_blank" style="color: inherit; text-decoration: underline;">YOLO-RAW: Advancing UAV Detection with Robustness to Adverse Weather Conditions</a></div>
+        <p class="pub-authors"><strong>Munir, A.</strong>, Siddiqui, A. J., Hossain, M. S., El-Maleh, A.</p>
+      </div>
     </section>
 
-    <!-- ================= RESEARCH FOCUS ================= -->
+    <!-- Research Focus -->
     <section id="research">
-      <h2 class="section-heading">Research Interests</h2>
-      <div class="tags-container">
-        <span class="research-tag">Vision-Language Models (VLMs)</span>
-        <span class="research-tag">Digital Image Forensics</span>
-        <span class="research-tag">Deepfake Localization</span>
-        <span class="research-tag">Multi-Modal Learning</span>
-        <span class="research-tag">Boundary &amp; Forensic Priors</span>
-        <span class="research-tag">Adversarial Robustness</span>
-        <span class="research-tag">Computer Vision</span>
-        <span class="research-tag">Medical Image Segmentation</span>
+      <h2 class="section-heading">Research Focus</h2>
+      <div class="tag-cluster">
+        <span class="tag">Vision-Language Models (VLMs)</span>
+        <span class="tag">Digital Image Forensics</span>
+        <span class="tag">Deepfake Localization</span>
+        <span class="tag">Adversarial Robustness</span>
+        <span class="tag">Medical Image Segmentation</span>
+        <span class="tag">UAV Vision Systems</span>
       </div>
     </section>
 
-    <!-- ================= EXPERIENCE & EDUCATION ================= -->
+    <!-- Experience Timeline -->
     <section id="experience">
-      <h2 class="section-heading">Academic &amp; Professional Experience</h2>
+      <h2 class="section-heading">Experience &amp; Education</h2>
       <ul class="timeline">
-        <li class="timeline-item">
-          <div class="timeline-date">2025 — Present</div>
-          <div class="timeline-role">PhD Student &amp; Teaching Assistant</div>
-          <div class="timeline-org">Linköping University (ISY), Sweden · WASP Fellow</div>
-          <p class="timeline-desc">
-            Focusing on Vision-Language Models for digital forensics, fine-grained forgery localization, and boundary uncertainty modeling.
-          </p>
+        <li class="tl-item">
+          <div class="tl-year">2025 — PRESENT</div>
+          <p class="tl-role">PhD Student, Digital Image Forensics</p>
+          <p class="tl-org">Linköping University (ISY) · WASP-funded</p>
         </li>
-
-        <li class="timeline-item">
-          <div class="timeline-date">Aug 2021 — Jun 2025</div>
-          <div class="timeline-role">Graduate Research &amp; Teaching Assistant</div>
-          <div class="timeline-org">King Fahd University of Petroleum and Minerals (KFUPM), Saudi Arabia</div>
-          <p class="timeline-desc">
-            Designed custom deep learning models for medical image segmentation and robust drone/UAV detection under severe environmental noise. Also earned M.S. in Computer Engineering (2024).
-          </p>
+        <li class="tl-item">
+          <div class="tl-year">2021 — 2025</div>
+          <p class="tl-role">Research &amp; Teaching Assistant / M.S. Degree</p>
+          <p class="tl-org">King Fahd University of Petroleum and Minerals (KFUPM)</p>
         </li>
-
-        <li class="timeline-item">
-          <div class="timeline-date">Feb 2021 — Jul 2021</div>
-          <div class="timeline-role">Embedded Systems Engineer</div>
-          <div class="timeline-org">Jolta Electric</div>
-          <p class="timeline-desc">
-            Developed embedded firmware and controller integrations for electric vehicle sensor telematics.
-          </p>
-        </li>
-
-        <li class="timeline-item">
-          <div class="timeline-date">Jul 2019 — Mar 2021</div>
-          <div class="timeline-role">Computer Vision R&amp;D Engineer</div>
-          <div class="timeline-org">E-Wall, Peshawar, Pakistan</div>
-          <p class="timeline-desc">
-            Engineered real-time vision algorithms in C++ and Python for edge tracking, pattern classification, and sensor data pipelines.
-          </p>
-        </li>
-
-        <li class="timeline-item">
-          <div class="timeline-date">2015 — 2019</div>
-          <div class="timeline-role">B.S. in Computer Engineering</div>
-          <div class="timeline-org">COMSATS University Islamabad, Attock Campus</div>
-          <p class="timeline-desc">
-            Graduated with distinction; recipient of the prestigious Merit Scholarship in Engineering.
-          </p>
+        <li class="tl-item">
+          <div class="tl-year">2019 — 2021</div>
+          <p class="tl-role">Computer Vision R&amp;D Engineer</p>
+          <p class="tl-org">E-Wall, Peshawar, Pakistan</p>
         </li>
       </ul>
     </section>
 
-    <!-- ================= HONOURS & AWARDS ================= -->
-    <section id="honours">
-      <h2 class="section-heading">Honours &amp; Awards</h2>
-      <div class="honours-grid">
-        <div class="honour-card">
-          <div class="honour-title">WASP PhD Scholarship</div>
-          <div class="honour-desc">Wallenberg AI, Autonomous Systems and Software Program, Sweden (2025–present).</div>
-        </div>
-
-        <div class="honour-card">
-          <div class="honour-title">Winner, 50K Challenge Competition (2024)</div>
-          <div class="honour-desc">Awarded by KFUPM for an innovative renewable energy and sensor intelligence project.</div>
-        </div>
-
-        <div class="honour-card">
-          <div class="honour-title">Graduate Studies Full Fellowship</div>
-          <div class="honour-desc">Awarded full MS scholarship by the Deanship of Graduate Studies at KFUPM.</div>
-        </div>
-
-        <div class="honour-card">
-          <div class="honour-title">National Research Foundation Grant</div>
-          <div class="honour-desc">Ministry of Science and ICT, South Korea (Grant NRF-2020R1A2B5B0200247).</div>
-        </div>
-
-        <div class="honour-card">
-          <div class="honour-title">Merit Scholarship in Engineering</div>
-          <div class="honour-desc">Pakistan Ordnance Factories (2017 – 2019).</div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ================= FOOTER ================= -->
-  <footer>
-    <div class="wrap footer-content">
-      <div>
-        <strong>Adnan Munir</strong> · Department of Electrical Engineering (ISY), Linköping University
-      </div>
-      <div>
-        Hosted on GitHub Pages / Personal Academic Profile
-      </div>
-    </div>
-  </footer>
+  </div>
 
 </body>
 </html>
