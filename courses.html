@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses — Adnan Munir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbf7ee;
+      --card-bg: #f4ecdc;
+      --header-bg: #4a5d38;
+      --header-text: #ffffff;
+      --ink: #1f231b;
+      --ink-soft: #383e33;
+      --muted: #6e7566;
+      --line: #ded7c6;
+      --accent: #8b3d22;
+      --accent-hover: #b84a22;
+      --tag-bg: #ece4d2;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 16.5px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Sticky Navigation */
+    header.site-header {
+      background-color: var(--header-bg);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .nav-container {
+      max-width: 1100px; margin: 0 auto;
+      padding: 14px 24px;
+      display: flex; justify-content: center;
+      gap: 22px; flex-wrap: wrap;
+    }
+    .nav-container a {
+      color: var(--header-text);
+      text-decoration: none;
+      font-size: 1.02rem;
+      font-weight: 500;
+    }
+    .nav-container a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 50px 24px 80px;
+    }
+
+    h1.page-title {
+      font-size: 2.4rem;
+      color: #2b3621;
+      margin: 0 0 10px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    p.page-subtitle {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin: 0 0 35px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 20px;
+    }
+
+    /* Degree Course Section Cards */
+    .course-card {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 26px 28px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .course-card h2 {
+      margin: 0 0 6px;
+      font-size: 1.45rem;
+      color: #2b3621;
+      font-weight: 700;
+    }
+    .course-card .institution {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Clean Styled Course List */
+    .course-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media (min-width: 650px) {
+      .course-list {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 24px;
+      }
+    }
+    .course-list li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 15.5px;
+      color: var(--ink-soft);
+      line-height: 1.45;
+    }
+    .course-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: -1px;
+      color: var(--accent);
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html">Home</a>
+      <a href="index.html#news">News</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="index.html#research">Research</a>
+      <a href="courses.html" style="text-decoration: underline; font-weight: 700;">Courses</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#honours">Honours</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 class="page-title">Graduate Coursework</h1>
+    <p class="page-subtitle">Specialized academic courses completed during doctoral and master's studies.</p>
+
+    <!-- PhD Section -->
+    <div class="course-card">
+      <h2>PhD in Electrical Engineering</h2>
+      <p class="institution">Specialization in Information Coding — Linköping University</p>
+      <ul class="course-list">
+        <li>Machine Learning for Computer Vision</li>
+        <li>Graphical Models and Bayesian Learning</li>
+        <li>Digital Image Forensics and Incident Response</li>
+        <li>Building and Understanding Large Language Models (LLMs)</li>
+        <li>Fundamentals for PhD Studies in Science and Engineering</li>
+      </ul>
+    </div>
+
+    <!-- Master's Section -->
+    <div class="course-card">
+      <h2>Master’s in Computer Engineering</h2>
+      <p class="institution">King Fahd University of Petroleum and Minerals (KFUPM)</p>
+      <ul class="course-list">
+        <li>Neural Network Theory and Application</li>
+        <li>Advanced Computer Vision</li>
+        <li>Advance Machine Learning</li>
+        <li>Distributed Computing</li>
+        <li>Digital System and Design</li>
+        <li>Heterogeneous Computing</li>
+        <li>Computer Networks</li>
+        <li>Computer Architecture</li>
+        <li>Computer Network and Security</li>
+        <li>Network Management</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>
