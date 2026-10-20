@@ -33,6 +33,7 @@
       font-size: 16.5px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
     }
 
     /* Top Sticky Navigation Bar */
@@ -49,14 +50,14 @@
       padding: 14px 24px;
       display: flex;
       justify-content: center;
-      gap: 28px;
+      gap: 22px;
       flex-wrap: wrap;
     }
     .nav-container a {
       color: var(--header-text);
       text-decoration: none;
       font-family: 'Newsreader', serif;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 500;
       letter-spacing: 0.3px;
       transition: opacity 0.2s;
@@ -176,6 +177,7 @@
     /* General Section Styling */
     section {
       margin-bottom: 50px;
+      padding-top: 20px;
     }
     h2.section-heading {
       font-family: 'Newsreader', serif;
@@ -186,6 +188,16 @@
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+    h2.section-heading a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 2px solid var(--line);
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    h2.section-heading a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
     }
 
     /* News Feed */
@@ -245,7 +257,11 @@
       border-radius: 3px;
     }
     .badge-q1 {
-      background: #e27d60;
+      background: #c9481f;
+      color: #fff;
+    }
+    .badge-q2 {
+      background: #d88135;
       color: #fff;
     }
     .pub-title {
@@ -253,6 +269,14 @@
       font-size: 1.05rem;
       margin: 2px 0 4px;
       color: var(--ink);
+    }
+    .pub-title a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .pub-title a:hover {
+      color: var(--accent);
     }
     .pub-authors {
       font-size: 14.5px;
@@ -263,22 +287,59 @@
       color: var(--ink-soft);
       text-decoration: underline;
     }
+    .pub-more {
+      margin-top: 24px;
+    }
+    .pub-more summary {
+      cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--accent);
+      outline: none;
+      user-select: none;
+    }
+    .pub-more summary:hover {
+      text-decoration: underline;
+    }
+    .pub-more[open] summary {
+      margin-bottom: 20px;
+    }
+
+    /* Research Tags */
+    .tag-cluster {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      background: var(--card-bg);
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      color: var(--ink);
+    }
 
     /* Timeline */
     .timeline {
       list-style: none;
-      padding-left: 18px;
+      padding-left: 20px;
       border-left: 2px solid var(--line);
       margin: 0;
     }
     .tl-item {
       position: relative;
-      margin-bottom: 22px;
+      margin-bottom: 28px;
+    }
+    .tl-item:last-child {
+      margin-bottom: 0;
     }
     .tl-item::before {
       content: '';
       position: absolute;
-      left: -23px;
+      left: -25px;
       top: 6px;
       width: 8px;
       height: 8px;
@@ -290,42 +351,139 @@
       font-size: 12px;
       font-weight: 700;
       color: var(--accent);
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
     .tl-role {
       font-weight: 700;
-      font-size: 15px;
+      font-size: 16px;
       margin: 0 0 2px;
     }
     .tl-org {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--muted);
+      margin: 0 0 6px;
+      font-weight: 500;
+    }
+    .tl-desc {
+      font-size: 14.5px;
       margin: 0;
+      color: var(--ink-soft);
+      line-height: 1.5;
     }
 
-    /* Research Tags */
-    .tag-cluster {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    /* Skills Grid */
+    .skill-groups {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
-    .tag {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 12.5px;
+    .skill-group {
       background: var(--card-bg);
-      padding: 4px 10px;
+      padding: 20px;
+      border-radius: 8px;
       border: 1px solid var(--line);
-      border-radius: 3px;
+    }
+    .skill-group h3 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--accent);
+      margin: 0 0 12px;
+      text-transform: uppercase;
+    }
+    .skill-group ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .skill-group li {
+      font-size: 14.5px;
+      padding: 6px 0;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+    }
+    .skill-group li:first-child {
+      border-top: none;
+    }
+
+    /* Honours List */
+    .honours {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .honours li {
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3px;
+      font-size: 15px;
+    }
+    .honours li:first-child {
+      border-top: none;
+    }
+    .honours .h-title {
+      font-weight: 700;
       color: var(--ink);
     }
+    .honours .h-org {
+      color: var(--muted);
+      font-size: 13.5px;
+    }
 
-    /* Responsive adjustments */
+    /* Footer */
+    footer {
+      background: #2b3621;
+      color: #edece6;
+      padding: 48px 0 32px;
+      margin-top: 40px;
+      border-radius: 6px;
+    }
+    footer h2 {
+      font-family: 'Newsreader', serif;
+      font-size: 1.8rem;
+      margin: 0 0 16px;
+    }
+    footer a.email-link {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1rem;
+    }
+    .foot-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: #b5bba9;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .foot-bottom a {
+      color: #edece6;
+      text-decoration: none;
+      margin-left: 14px;
+    }
+    .foot-bottom a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
     @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
       }
       .hero-photo {
         max-width: 200px;
+      }
+      .skill-groups {
+        grid-template-columns: 1fr;
       }
       .contact-card {
         margin-top: 10px;
@@ -335,14 +493,19 @@
 </head>
 <body>
 
-  <!-- Top Sticky Navigation -->
+  <!-- Top Navigation -->
   <header class="site-header">
     <div class="nav-container">
-      <a href="#about">Home</a>
+      <a href="#about">About</a>
       <a href="#news">News</a>
       <a href="#publications">Publications</a>
       <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#demos">Demos</a>
       <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#degrees">Degrees</a>
+      <a href="#honours">Honours</a>
       <a href="#contact">Contact</a>
     </div>
   </header>
@@ -368,10 +531,10 @@
           Hi! I am a doctoral researcher in <strong>Digital Image Forensics and Computer Vision</strong>. My research focuses on Vision-Language Models (VLMs), deepfake forensics, and developing robust multi-scale architectures to expose, localize, and explain subtle image manipulations.
         </p>
         <p>
-          Currently, I am pursuing my PhD in the Department of Electrical Engineering (ISY), Information Coding Division at <strong>Linköping University</strong> in Sweden, funded by the <a href="https://wasp-sweden.org/" target="_blank" rel="noopener">Wallenberg AI, Autonomous Systems and Software Program (WASP)</a>.
+          Currently, I am pursuing my PhD in the Department of Electrical Engineering (ISY), Information Coding Division at <strong>Linköping University</strong> in Sweden, funded by the <a href="https://wasp-sweden.org/" target="_blank" rel="noopener">Wallenberg AI, Autonomous Systems and Software Program (WASP)</a>, and working as a Teaching Assistant alongside my research.
         </p>
         <p>
-          Prior to this, I was a Research Assistant at <strong>King Fahd University of Petroleum and Minerals (KFUPM)</strong> where I earned my M.S. in Computer Engineering, and a Computer Vision R&amp;D Engineer at E-Wall.
+          Prior to this, I spent 2021–2025 as a Research Assistant in the Computer Engineering Department at <strong>King Fahd University of Petroleum and Minerals (KFUPM)</strong> where I earned my M.S. in Computer Engineering, and 2019–2021 as a Vision Research &amp; Development Engineer at E-Wall in Peshawar, Pakistan.
         </p>
       </div>
 
@@ -402,16 +565,16 @@
       <h2 class="section-heading">News</h2>
       <ul class="news-list">
         <li>
-          <span class="news-date">2026-10</span> Our paper <strong>"BUFF-Net: Boundary–Uncertainty Guided Multi-Scale Refinement Network with Frozen Forensic Priors for Image Manipulation Detection and Localization"</strong> has been accepted at <strong>WACV 2027</strong>! 🎉
+          <span class="news-date">2026-10</span> Our paper <strong>"BUFF-Net: Boundary–Uncertainty Guided Multi-Scale Refinement Network with Frozen Forensic Priors for Image Manipulation Detection and Localization"</strong> has been accepted at <strong>WACV 2027</strong>! 🎉📄
         </li>
         <li>
           <span class="news-date">2026-10</span> Completed a research study trip across Paris and Rennes organized by <strong>WASP</strong>! Read more on my <a href="https://esacadnanmunir.blogspot.com/2026/10/wasp-research-trip-to-france-root.html" target="_blank" rel="noopener">blog post</a>. 🇫🇷✈️
         </li>
         <li>
-          <span class="news-date">2026-09</span> Paper <strong>"TraCE: Transformer-based Forensic Cue and Evidence Modulation for Image Forgery Detection and Localization"</strong> accepted at <em>BMVC 2026</em>!
+          <span class="news-date">2026-09</span> Paper <strong>"TraCE: Transformer-based Forensic Cue and Evidence Modulation for Image Forgery Detection and Localization"</strong> accepted at <em>BMVC 2026</em>! 🎉
         </li>
         <li>
-          <span class="news-date">2026-08</span> Attended the <a href="https://esacadnanmunir.blogspot.com/2026/09/wasp-summer-school-and-industry-visit.html" target="_blank" rel="noopener">WASP Summer School and Industry Visit</a> in Linköping — five days visiting NAISS, SICK, Ericsson, and Visualiseringscenter C.
+          <span class="news-date">2026-08</span> Attended the <a href="https://esacadnanmunir.blogspot.com/2026/09/wasp-summer-school-and-industry-visit.html" target="_blank" rel="noopener">WASP Summer School and Industry Visit</a> in Linköping — five days with 80+ researchers, visiting NAISS, SICK, Ericsson, and Visualiseringscenter C.
         </li>
         <li>
           <span class="news-date">2026-04</span> Paper "DAUNet" accepted in <em>IEEE Journal of Biomedical and Health Informatics</em>.
@@ -421,15 +584,16 @@
 
     <!-- Publications Section -->
     <section id="publications">
-      <h2 class="section-heading">Selected Publications</h2>
+      <h2 class="section-heading">Publications</h2>
       
+      <!-- Selected Highlights -->
       <div class="pub-item">
         <div class="pub-badges">
           <span class="badge">2027</span>
           <span class="badge">WACV 2027</span>
         </div>
         <div class="pub-title">BUFF-Net: Boundary–Uncertainty Guided Multi-Scale Refinement Network with Frozen Forensic Priors for Image Manipulation Detection and Localization</div>
-        <p class="pub-authors"><strong>Munir, A.</strong>, <a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank">Mohaoui, S.</a>, <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank">Chang, S.</a></p>
+        <p class="pub-authors"><strong>Munir, A.</strong>, <a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank" rel="noopener">Mohaoui, S.</a>, <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank" rel="noopener">Chang, S.</a></p>
       </div>
 
       <div class="pub-item">
@@ -438,7 +602,7 @@
           <span class="badge">BMVC 2026</span>
         </div>
         <div class="pub-title">TraCE: Transformer-based Forensic Cue and Evidence Modulation for Image Forgery Detection and Localization</div>
-        <p class="pub-authors"><a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank">Mohaoui, S.</a>, <strong>Munir, A.</strong>, <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank">Chang, S.</a></p>
+        <p class="pub-authors"><a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank" rel="noopener">Mohaoui, S.</a>, <strong>Munir, A.</strong>, <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank" rel="noopener">Chang, S.</a></p>
       </div>
 
       <div class="pub-item">
@@ -447,8 +611,17 @@
           <span class="badge">IEEE JBHI</span>
           <span class="badge badge-q1">Q1</span>
         </div>
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11481615" target="_blank" style="color: inherit; text-decoration: underline;">DAUNet: A Lightweight UNet Variant with Deformable Convolutions and Parameter-Free Attention for Medical Image Segmentation</a></div>
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11481615" target="_blank" rel="noopener">DAUNet: A Lightweight UNet Variant with Deformable Convolutions and Parameter-Free Attention for Medical Image Segmentation</a></div>
         <p class="pub-authors"><strong>Munir, A.</strong>, Jabbar, M. S., Khan, S.</p>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badges">
+          <span class="badge">2025</span>
+          <span class="badge">ICBB</span>
+        </div>
+        <div class="pub-title"><a href="https://doi.org/10.1109/BIBE66822.2025.00044" target="_blank" rel="noopener">Deployable Ultrasound Segmentation via Deformable Attention-Enhanced UNet</a></div>
+        <p class="pub-authors"><strong>Munir, A.</strong>, Khan, S.</p>
       </div>
 
       <div class="pub-item">
@@ -457,22 +630,108 @@
           <span class="badge">IEEE T-ITS</span>
           <span class="badge badge-q1">Q1</span>
         </div>
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10976436" target="_blank" style="color: inherit; text-decoration: underline;">YOLO-RAW: Advancing UAV Detection with Robustness to Adverse Weather Conditions</a></div>
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10976436" target="_blank" rel="noopener">YOLO-RAW: Advancing UAV Detection with Robustness to Adverse Weather Conditions</a></div>
         <p class="pub-authors"><strong>Munir, A.</strong>, Siddiqui, A. J., Hossain, M. S., El-Maleh, A.</p>
       </div>
+
+      <!-- Expandable Publication Archive -->
+      <details class="pub-more">
+        <summary>+ Show more publications (click to expand)</summary>
+        
+        <div class="pub-item">
+          <div class="pub-badges">
+            <span class="badge">2024</span>
+            <span class="badge">Drones</span>
+            <span class="badge badge-q1">Q1</span>
+          </div>
+          <div class="pub-title"><a href="https://doi.org/10.3390/drones8110638" target="_blank" rel="noopener">Impact of Adverse Weather and Image Distortions on Vision-based UAV Detection: A Performance Evaluation of Deep Learning Models</a></div>
+          <p class="pub-authors"><strong>Munir, A.</strong>, Siddiqui, A. J., Anwar, S., Khan, A. H., Rehman, A.</p>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-badges">
+            <span class="badge">2024</span>
+            <span class="badge">DICTA</span>
+          </div>
+          <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10869593" target="_blank" rel="noopener">DustRobust-YOLO: Enhanced UAV Detection in Dusty Conditions</a></div>
+          <p class="pub-authors"><strong>Munir, A.</strong>, Alsabbagh, A., Siddiqui, A. J.</p>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-badges">
+            <span class="badge">2024</span>
+            <span class="badge">WACV Workshop</span>
+          </div>
+          <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10495594" target="_blank" rel="noopener">Investigation of UAV Detection in Images with Complex Backgrounds and Rainy Artifacts</a></div>
+          <p class="pub-authors"><strong>Munir, A.</strong>, Siddiqui, A. J., Anwar, S.</p>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-badges">
+            <span class="badge">2024</span>
+            <span class="badge">Sensors</span>
+            <span class="badge badge-q2">Q2</span>
+          </div>
+          <div class="pub-title"><a href="https://doi.org/10.3390/s24227259" target="_blank" rel="noopener">R-RDSP: Reliable and Rapidly Deployable Wireless Ad Hoc System for Post-Disaster Management over DDS</a></div>
+          <p class="pub-authors">Jan, B., <strong>Munir, A.</strong>, Khan, A. H., Khan, A., Al-Madani, B. M.</p>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-badges">
+            <span class="badge">2025</span>
+            <span class="badge">IoT (MDPI)</span>
+          </div>
+          <div class="pub-title"><a href="https://doi.org/10.3390/iot6040070" target="_blank" rel="noopener">Lightweight Quantized XGBoost for Botnet Detection in Resource-Constrained IoT Networks</a></div>
+          <p class="pub-authors">Rauf Ali Khan, M., Barnawi, A. Y., <strong>Munir, A.</strong>, Alsalman, Z., Satan Sanunga, D. M.</p>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-badges">
+            <span class="badge">2020</span>
+            <span class="badge">Sensors</span>
+            <span class="badge badge-q2">Q2</span>
+          </div>
+          <div class="pub-title"><a href="https://doi.org/10.3390/s20020548" target="_blank" rel="noopener">RDSP: Rapidly Deployable Wireless Ad Hoc System for Post-Disaster Management</a></div>
+          <p class="pub-authors">Khan, A., <strong>Munir, A.</strong>, Kaleem, Z., Muhammad, F. U., Nkenyereye, L., Shah, S., Nguyen, L. D., Islam, S. M. R., Kwak, K.-S.</p>
+        </div>
+      </details>
     </section>
 
     <!-- Research Focus -->
     <section id="research">
       <h2 class="section-heading">Research Focus</h2>
       <div class="tag-cluster">
-        <span class="tag">Vision-Language Models (VLMs)</span>
+        <span class="tag">Vision Language Models (VLMs)</span>
+        <span class="tag">Large Language Models (LLMs)</span>
+        <span class="tag">Multi-Modal Models</span>
         <span class="tag">Digital Image Forensics</span>
-        <span class="tag">Deepfake Localization</span>
-        <span class="tag">Adversarial Robustness</span>
+        <span class="tag">Deepfake Detection &amp; Localization</span>
+        <span class="tag">Computer Vision</span>
+        <span class="tag">Adversarial Attacks &amp; Robustness</span>
+        <span class="tag">Deep Learning</span>
         <span class="tag">Medical Image Segmentation</span>
-        <span class="tag">UAV Vision Systems</span>
+        <span class="tag">Federated Learning</span>
       </div>
+    </section>
+
+    <!-- Projects Link -->
+    <section id="projects">
+      <h2 class="section-heading">
+        <a href="https://sites.google.com/view/adnanmunir/projects?authuser=0" target="_blank" rel="noopener">
+          Featured Projects ↗
+        </a>
+      </h2>
+      <p>Visit the interactive project showcase covering ongoing research implementations, system prototypes, and software releases.</p>
+    </section>
+
+    <!-- Demos & Media -->
+    <section id="demos">
+      <h2 class="section-heading">
+        <a href="https://sites.google.com/view/adnanmunir/demos-and-videos" target="_blank" rel="noopener">
+          Media &amp; Demos ↗
+        </a>
+      </h2>
+      <p>Access recorded lecture series, computer architecture tutorials, and real-time computer vision video demonstrations.</p>
     </section>
 
     <!-- Experience Timeline -->
@@ -482,22 +741,130 @@
         <li class="tl-item">
           <div class="tl-year">2025 — PRESENT</div>
           <p class="tl-role">PhD Student, Digital Image Forensics</p>
-          <p class="tl-org">Linköping University (ISY) · WASP-funded</p>
+          <p class="tl-org">Linköping University (ISY) · WASP-funded · Teaching Assistant</p>
+          <p class="tl-desc">Conducting research in VLM-powered digital image forensics, detecting and localizing subtle synthetic manipulations in visual media.</p>
         </li>
         <li class="tl-item">
-          <div class="tl-year">2021 — 2025</div>
-          <p class="tl-role">Research &amp; Teaching Assistant / M.S. Degree</p>
+          <div class="tl-year">AUG 2021 — JUN 2025</div>
+          <p class="tl-role">Research / Teaching Assistant</p>
+          <p class="tl-org">King Fahd University of Petroleum and Minerals (KFUPM)</p>
+          <p class="tl-desc">Provided expertise in Artificial Intelligence, Machine Learning, and Computer Vision, focusing on advanced algorithm development, real-time model deployment, and innovative solutions for complex problems. Work included designing custom models, integrating AI with embedded systems, and driving research to advance technology.</p>
+        </li>
+        <li class="tl-item">
+          <div class="tl-year">FEB 2021 — JUL 2021</div>
+          <p class="tl-role">Embedded System Engineer</p>
+          <p class="tl-org">Jolta Electric</p>
+          <p class="tl-desc">Responsible for designing, developing, and optimizing embedded systems that drive innovative solutions in the electric vehicle industry. Role involved working on hardware-software integration, developing firmware for various sensors and controllers, and ensuring robust performance and reliability.</p>
+        </li>
+        <li class="tl-item">
+          <div class="tl-year">JUL 2019 — MAR 2021</div>
+          <p class="tl-role">Computer Vision Research Engineer</p>
+          <p class="tl-org">E-Wall, Peshawar, Pakistan</p>
+          <p class="tl-desc">Designed and developed software and hardware systems to process, analyze, and interpret visual data from cameras and sensors. Utilized C++, Python, and machine learning algorithms to develop computer vision systems that detect objects, track movements, and recognize patterns in visual data.</p>
+        </li>
+        <li class="tl-item">
+          <div class="tl-year">2024</div>
+          <p class="tl-role">M.S., Computer Engineering</p>
           <p class="tl-org">King Fahd University of Petroleum and Minerals (KFUPM)</p>
         </li>
         <li class="tl-item">
-          <div class="tl-year">2019 — 2021</div>
-          <p class="tl-role">Computer Vision R&amp;D Engineer</p>
-          <p class="tl-org">E-Wall, Peshawar, Pakistan</p>
+          <div class="tl-year">2019</div>
+          <p class="tl-role">B.S., Computer Engineering</p>
+          <p class="tl-org">COMSATS University Islamabad, Attock Campus</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Skills Toolkit -->
+    <section id="skills">
+      <h2 class="section-heading">Technical Toolkit</h2>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>Research &amp; ML</h3>
+          <ul>
+            <li>Research &amp; Development</li>
+            <li>Advanced Machine Learning &amp; Deep Learning</li>
+            <li>Vision-Language Models (VLMs) &amp; Transformers</li>
+            <li>Python (PyTorch, TensorFlow, OpenCV)</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Systems &amp; Hardware</h3>
+          <ul>
+            <li>NVIDIA Jetson Nano &amp; Edge AI</li>
+            <li>Raspberry Pi Integration</li>
+            <li>Verilog &amp; Digital Design</li>
+            <li>Linux Environment · MATLAB · LaTeX</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Degrees & Extracurricular Links -->
+    <section id="degrees">
+      <h2 class="section-heading">
+        <a href="https://sites.google.com/view/adnanmunir/degree-and-courses" target="_blank" rel="noopener">
+          Degrees &amp; Courses ↗
+        </a>
+      </h2>
+      <p>View detailed academic degree records, university transcripts, PhD coursework, and specialized technical certifications.</p>
+      
+      <p style="margin-top: 14px;">
+        Explore leadership and volunteer community engagements on the 
+        <a href="https://sites.google.com/view/adnanmunir/extra-curricular-activities" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600; text-decoration: underline;">
+          Extra-Curricular Activities page ↗
+        </a>.
+      </p>
+    </section>
+
+    <!-- Honours & Awards -->
+    <section id="honours">
+      <h2 class="section-heading">Honours &amp; Awards</h2>
+      <ul class="honours">
+        <li>
+          <span class="h-title">PhD Scholarship — Wallenberg AI, Autonomous Systems and Software Program (WASP)</span>
+          <span class="h-org">Sweden</span>
+        </li>
+        <li>
+          <span class="h-title">Winner, 50K Challenge Competition 2024</span>
+          <span class="h-org">KFUPM — recognized for a winning renewable energy project</span>
+        </li>
+        <li>
+          <span class="h-title">MS Scholarship, Deanship of Graduate Studies</span>
+          <span class="h-org">King Fahd University of Petroleum and Minerals</span>
+        </li>
+        <li>
+          <span class="h-title">Research Grant, National Research Foundation of Korea</span>
+          <span class="h-org">Ministry of Science and ICT · NRF 2020R1A2B5B0200247</span>
+        </li>
+        <li>
+          <span class="h-title">Merit Scholarship in Engineering</span>
+          <span class="h-org">Pakistan Ordnance Factories, 2017 – 2019</span>
         </li>
       </ul>
     </section>
 
   </div>
+
+  <!-- Footer -->
+  <footer id="contact-footer">
+    <div class="container" style="padding-bottom: 0;">
+      <h2>Get in touch</h2>
+      <p>Feel free to reach out for research discussions, collaborations, or questions:</p>
+      <a class="email-link" href="mailto:adnanmunir294@gmail.com">adnanmunir294@gmail.com</a>
+      
+      <div class="foot-bottom">
+        <span>Linköping, Sweden</span>
+        <div>
+          <a href="https://scholar.google.com/citations?user=ywcL21UAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
+          <a href="https://www.linkedin.com/in/adnan-m-84b65b164/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/AdnanMunir338" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://esacadnanmunir.blogspot.com/" target="_blank" rel="noopener">Blog</a>
+          <a href="https://www.youtube.com/@AdnanMunirkhokhar" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
