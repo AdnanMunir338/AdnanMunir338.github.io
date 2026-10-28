@@ -86,7 +86,6 @@
       border-bottom: 1px solid var(--line);
     }
 
-    /* Column 1: Portrait */
     .hero-photo-col {
       display: flex;
       flex-direction: column;
@@ -103,7 +102,6 @@
       display: block;
     }
 
-    /* Column 2: Bio */
     .hero-bio-col h1 {
       font-family: 'Newsreader', serif;
       font-size: 2.2rem;
@@ -126,7 +124,6 @@
       color: var(--accent-hover);
     }
 
-    /* Column 3: Contact Card */
     .contact-card {
       background-color: var(--card-bg);
       border-radius: 12px;
@@ -232,79 +229,117 @@
       text-decoration: underline;
     }
 
-    /* Publications */
+    /* ===== Publications (image + text rows) ===== */
+    .pub-group-heading {
+      font-family: 'Newsreader', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2b3621;
+      margin: 34px 0 6px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .pub-group-heading:first-of-type {
+      margin-top: 10px;
+    }
+
     .pub-item {
-      margin-bottom: 22px;
-      padding-bottom: 18px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 28px;
+      align-items: center;
+      padding: 26px 0;
       border-bottom: 1px dashed var(--line);
     }
     .pub-item:last-child {
       border-bottom: none;
     }
-    .pub-badges {
+
+    .pub-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
       display: flex;
-      gap: 8px;
       align-items: center;
-      margin-bottom: 4px;
+      justify-content: center;
     }
-    .badge {
+    .pub-thumb::before {
+      content: 'Add figure';
+      position: absolute;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 11.5px;
-      font-weight: 700;
-      padding: 2px 7px;
-      background: var(--tag-bg);
-      color: var(--ink-soft);
-      border-radius: 3px;
+      font-size: 12px;
+      color: var(--muted);
     }
-    .badge-q1 {
-      background: #c9481f;
-      color: #fff;
+    .pub-thumb img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+      display: block;
     }
-    .badge-q2 {
-      background: #d88135;
-      color: #fff;
-    }
+
+    .pub-info { min-width: 0; }
     .pub-title {
       font-weight: 700;
-      font-size: 1.05rem;
-      margin: 2px 0 4px;
-      color: var(--ink);
+      font-size: 1.12rem;
+      line-height: 1.35;
+      margin: 0 0 4px;
+      color: var(--accent);
     }
     .pub-title a {
       color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 2px;
+      text-decoration: none;
     }
     .pub-title a:hover {
-      color: var(--accent);
+      color: var(--accent-hover);
+      text-decoration: underline;
     }
     .pub-authors {
-      font-size: 14.5px;
-      color: var(--muted);
-      margin: 0;
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin: 0 0 2px;
     }
     .pub-authors a {
-      color: var(--ink-soft);
-      text-decoration: underline;
-    }
-    .pub-more {
-      margin-top: 24px;
-    }
-    .pub-more summary {
-      cursor: pointer;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 13.5px;
-      font-weight: 700;
       color: var(--accent);
-      outline: none;
-      user-select: none;
+      text-decoration: none;
     }
-    .pub-more summary:hover {
-      text-decoration: underline;
+    .pub-authors a:hover { text-decoration: underline; }
+    .pub-venue {
+      font-style: italic;
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin: 0 0 6px;
     }
-    .pub-more[open] summary {
-      margin-bottom: 20px;
+    .pub-links {
+      font-size: 15px;
+      margin: 0;
     }
+    .pub-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .pub-links a:hover { text-decoration: underline; }
+    .pub-links .sep { color: var(--muted); margin: 0 4px; }
+    .badge {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 6px;
+      margin-left: 6px;
+      background: var(--tag-bg);
+      color: var(--ink-soft);
+      border-radius: 3px;
+      font-style: normal;
+      vertical-align: 1px;
+    }
+    .badge-q1 { background: #c9481f; color: #fff; }
+    .badge-q2 { background: #d88135; color: #fff; }
 
     /* Research Tags */
     .tag-cluster {
@@ -333,9 +368,7 @@
       position: relative;
       margin-bottom: 28px;
     }
-    .tl-item:last-child {
-      margin-bottom: 0;
-    }
+    .tl-item:last-child { margin-bottom: 0; }
     .tl-item::before {
       content: '';
       position: absolute;
@@ -402,9 +435,7 @@
       border-top: 1px solid var(--line);
       color: var(--ink-soft);
     }
-    .skill-group li:first-child {
-      border-top: none;
-    }
+    .skill-group li:first-child { border-top: none; }
 
     /* Honours List */
     .honours {
@@ -420,9 +451,7 @@
       gap: 3px;
       font-size: 15px;
     }
-    .honours li:first-child {
-      border-top: none;
-    }
+    .honours li:first-child { border-top: none; }
     .honours .h-title {
       font-weight: 700;
       color: var(--ink);
@@ -470,59 +499,48 @@
       text-decoration: none;
       margin-left: 14px;
     }
-    .foot-bottom a:hover {
-      text-decoration: underline;
-    }
+    .foot-bottom a:hover { text-decoration: underline; }
 
     /* Responsive */
     @media (max-width: 900px) {
-      .hero-grid {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-photo { max-width: 200px; }
+      .skill-groups { grid-template-columns: 1fr; }
+      .contact-card { margin-top: 10px; }
+      .pub-item {
         grid-template-columns: 1fr;
+        gap: 14px;
       }
-      .hero-photo {
-        max-width: 200px;
-      }
-      .skill-groups {
-        grid-template-columns: 1fr;
-      }
-      .contact-card {
-        margin-top: 10px;
-      }
+      .pub-thumb { max-width: 420px; }
     }
   </style>
 </head>
 <body>
 
   <!-- Top Navigation -->
-<header class="site-header">
-  <div class="nav-container">
-    <a href="#about">About</a>
-    <a href="#news">News</a>
-    <a href="#publications">Publications</a>
-    <a href="#research">Research</a>
-    <a href="courses.html">Courses</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#honours">Honours</a>
-    <a href="#contact">Contact</a>
-  </div>
-</header>
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#research">Research</a>
+      <a href="courses.html">Courses</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#honours">Honours</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
 
   <div class="container">
 
     <!-- 3-Column Top Hero Grid -->
     <div class="hero-grid" id="about">
-      
-      <!-- Column 1: Image -->
+
       <div class="hero-photo-col">
-        <img 
-          class="hero-photo" 
-          src="./profile1.png" 
-          alt="Portrait of Adnan Munir"
-        />
+        <img class="hero-photo" src="./profile1.png" alt="Portrait of Adnan Munir" />
       </div>
 
-      <!-- Column 2: Bio -->
       <div class="hero-bio-col">
         <h1>Adnan Munir</h1>
         <p>
@@ -536,11 +554,10 @@
         </p>
       </div>
 
-      <!-- Column 3: Contact Card -->
       <div class="contact-card" id="contact">
         <h2>Contact</h2>
         <p>
-<strong>Adnan Munir</strong><br>
+          <strong>Adnan Munir</strong><br>
           <a href="https://liu.se/en/employee/adnmu34" target="_blank" rel="noopener noreferrer">Department of Electrical Engineering (ISY)</a><br>
           Linköping University<br>
           Linköping, Sweden
@@ -583,116 +600,156 @@
     <!-- Publications Section -->
     <section id="publications">
       <h2 class="section-heading">Publications</h2>
-      
-      <!-- Selected Highlights -->
+
+      <!-- ===================== CONFERENCE ===================== -->
+      <h3 class="pub-group-heading">Conference</h3>
+
+      <!-- BUFF-Net -->
       <div class="pub-item">
-        <div class="pub-badges">
-          <span class="badge">2026</span>
-          <span class="badge">WACV 2027</span>
+        <div class="pub-thumb">
+          <img src="images/publications/buffnet.png" alt="BUFF-Net overview figure" loading="lazy" onerror="this.style.display='none'">
         </div>
-        <div class="pub-title">BUFF-Net: Boundary–Uncertainty Guided Multi-Scale Refinement Network with Frozen Forensic Priors for Image Manipulation Detection and Localization</div>
-        <p class="pub-authors"><strong>Munir, A.</strong>, <a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank" rel="noopener">Mohaoui, S.</a>, <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank" rel="noopener">Chang, S.</a></p>
+        <div class="pub-info">
+          <div class="pub-title">BUFF-Net: Boundary–Uncertainty Guided Multi-Scale Refinement Network with Frozen Forensic Priors for Image Manipulation Detection and Localization</div>
+          <p class="pub-authors"><strong>Adnan Munir</strong>, <a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank" rel="noopener">Souad Mohaoui</a>, <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank" rel="noopener">Shizhen Chang</a></p>
+          <p class="pub-venue">IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2027</p>
+          <!-- Add links when available, e.g.:
+          <p class="pub-links"><a href="PAPER_URL">paper</a><span class="sep">/</span><a href="CODE_URL">code</a></p> -->
+        </div>
       </div>
 
+      <!-- TraCE -->
       <div class="pub-item">
-        <div class="pub-badges">
-          <span class="badge">2026</span>
-          <span class="badge">BMVC 2026</span>
+        <div class="pub-thumb">
+          <img src="images/publications/trace.png" alt="TraCE overview figure" loading="lazy" onerror="this.style.display='none'">
         </div>
-        <div class="pub-title">TraCE: Transformer-based Forensic Cue and Evidence Modulation for Image Forgery Detection and Localization</div>
-        <p class="pub-authors"><a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank" rel="noopener">Mohaoui, S.</a>, <strong>Munir, A.</strong>, <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank" rel="noopener">Chang, S.</a></p>
+        <div class="pub-info">
+          <div class="pub-title">TraCE: Transformer-based Forensic Cue and Evidence Modulation for Image Forgery Detection and Localization</div>
+          <p class="pub-authors"><a href="https://openreview.net/profile?id=~Souad_Mohaoui2" target="_blank" rel="noopener">Souad Mohaoui</a>, <strong>Adnan Munir</strong>, <a href="https://openreview.net/profile?id=~Shizhen_Chang1" target="_blank" rel="noopener">Shizhen Chang</a></p>
+          <p class="pub-venue">British Machine Vision Conference (BMVC), 2026</p>
+        </div>
       </div>
 
+      <!-- Ultrasound -->
       <div class="pub-item">
-        <div class="pub-badges">
-          <span class="badge">2026</span>
-          <span class="badge">IEEE JBHI</span>
-          <span class="badge badge-q1">Q1</span>
+        <div class="pub-thumb">
+          <img src="images/publications/ultrasound-seg.png" alt="Deformable attention UNet figure" loading="lazy" onerror="this.style.display='none'">
         </div>
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11481615" target="_blank" rel="noopener">DAUNet: A Lightweight UNet Variant with Deformable Convolutions and Parameter-Free Attention for Medical Image Segmentation</a></div>
-        <p class="pub-authors"><strong>Munir, A.</strong>, Jabbar, M. S., Khan, S.</p>
+        <div class="pub-info">
+          <div class="pub-title"><a href="https://doi.org/10.1109/BIBE66822.2025.00044" target="_blank" rel="noopener">Deployable Ultrasound Segmentation via Deformable Attention-Enhanced UNet</a></div>
+          <p class="pub-authors"><strong>Adnan Munir</strong>, Shujaat Khan</p>
+          <p class="pub-venue">International Conference on Bioinformatics and Biomedicine (ICBB), 2025</p>
+          <p class="pub-links"><a href="https://doi.org/10.1109/BIBE66822.2025.00044" target="_blank" rel="noopener">paper</a></p>
+        </div>
       </div>
 
+      <!-- DustRobust-YOLO -->
       <div class="pub-item">
-        <div class="pub-badges">
-          <span class="badge">2025</span>
-          <span class="badge">ICBB</span>
+        <div class="pub-thumb">
+          <img src="images/publications/dustrobust-yolo.png" alt="DustRobust-YOLO figure" loading="lazy" onerror="this.style.display='none'">
         </div>
-        <div class="pub-title"><a href="https://doi.org/10.1109/BIBE66822.2025.00044" target="_blank" rel="noopener">Deployable Ultrasound Segmentation via Deformable Attention-Enhanced UNet</a></div>
-        <p class="pub-authors"><strong>Munir, A.</strong>, Khan, S.</p>
-      </div>
-
-      <div class="pub-item">
-        <div class="pub-badges">
-          <span class="badge">2025</span>
-          <span class="badge">IEEE T-ITS</span>
-          <span class="badge badge-q1">Q1</span>
-        </div>
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10976436" target="_blank" rel="noopener">YOLO-RAW: Advancing UAV Detection with Robustness to Adverse Weather Conditions</a></div>
-        <p class="pub-authors"><strong>Munir, A.</strong>, Siddiqui, A. J., Hossain, M. S., El-Maleh, A.</p>
-      </div>
-
-      <!-- Expandable Publication Archive -->
-      <details class="pub-more">
-        <summary>+ Show more publications (click to expand)</summary>
-        
-        <div class="pub-item">
-          <div class="pub-badges">
-            <span class="badge">2024</span>
-            <span class="badge">Drones</span>
-            <span class="badge badge-q1">Q1</span>
-          </div>
-          <div class="pub-title"><a href="https://doi.org/10.3390/drones8110638" target="_blank" rel="noopener">Impact of Adverse Weather and Image Distortions on Vision-based UAV Detection: A Performance Evaluation of Deep Learning Models</a></div>
-          <p class="pub-authors"><strong>Munir, A.</strong>, Siddiqui, A. J., Anwar, S., Khan, A. H., Rehman, A.</p>
-        </div>
-
-        <div class="pub-item">
-          <div class="pub-badges">
-            <span class="badge">2024</span>
-            <span class="badge">DICTA</span>
-          </div>
+        <div class="pub-info">
           <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10869593" target="_blank" rel="noopener">DustRobust-YOLO: Enhanced UAV Detection in Dusty Conditions</a></div>
-          <p class="pub-authors"><strong>Munir, A.</strong>, Alsabbagh, A., Siddiqui, A. J.</p>
+          <p class="pub-authors"><strong>Adnan Munir</strong>, Abdullah Alsabbagh, Abdul Jabbar Siddiqui</p>
+          <p class="pub-venue">Digital Image Computing: Techniques and Applications (DICTA), 2024</p>
+          <p class="pub-links"><a href="https://ieeexplore.ieee.org/document/10869593" target="_blank" rel="noopener">paper</a></p>
         </div>
+      </div>
 
-        <div class="pub-item">
-          <div class="pub-badges">
-            <span class="badge">2024</span>
-            <span class="badge">WACV Workshop</span>
-          </div>
+      <!-- WACV Workshop -->
+      <div class="pub-item">
+        <div class="pub-thumb">
+          <img src="images/publications/uav-rain.png" alt="UAV detection in rain figure" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="pub-info">
           <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10495594" target="_blank" rel="noopener">Investigation of UAV Detection in Images with Complex Backgrounds and Rainy Artifacts</a></div>
-          <p class="pub-authors"><strong>Munir, A.</strong>, Siddiqui, A. J., Anwar, S.</p>
+          <p class="pub-authors"><strong>Adnan Munir</strong>, Abdul Jabbar Siddiqui, Saeed Anwar</p>
+          <p class="pub-venue">IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) Workshops, 2024</p>
+          <p class="pub-links"><a href="https://ieeexplore.ieee.org/document/10495594" target="_blank" rel="noopener">paper</a></p>
         </div>
+      </div>
 
-        <div class="pub-item">
-          <div class="pub-badges">
-            <span class="badge">2024</span>
-            <span class="badge">Sensors</span>
-            <span class="badge badge-q2">Q2</span>
-          </div>
-          <div class="pub-title"><a href="https://doi.org/10.3390/s24227259" target="_blank" rel="noopener">R-RDSP: Reliable and Rapidly Deployable Wireless Ad Hoc System for Post-Disaster Management over DDS</a></div>
-          <p class="pub-authors">Jan, B., <strong>Munir, A.</strong>, Khan, A. H., Khan, A., Al-Madani, B. M.</p>
+      <!-- ===================== JOURNAL ===================== -->
+      <h3 class="pub-group-heading">Journal</h3>
+
+      <!-- DAUNet -->
+      <div class="pub-item">
+        <div class="pub-thumb">
+          <img src="images/publications/daunet.png" alt="DAUNet architecture figure" loading="lazy" onerror="this.style.display='none'">
         </div>
+        <div class="pub-info">
+          <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11481615" target="_blank" rel="noopener">DAUNet: A Lightweight UNet Variant with Deformable Convolutions and Parameter-Free Attention for Medical Image Segmentation</a></div>
+          <p class="pub-authors"><strong>Adnan Munir</strong>, Muhammad Shahid Jabbar, Shujaat Khan</p>
+          <p class="pub-venue">IEEE Journal of Biomedical and Health Informatics (JBHI), 2026 <span class="badge badge-q1">Q1</span></p>
+          <p class="pub-links"><a href="https://ieeexplore.ieee.org/abstract/document/11481615" target="_blank" rel="noopener">paper</a></p>
+        </div>
+      </div>
 
-        <div class="pub-item">
-          <div class="pub-badges">
-            <span class="badge">2025</span>
-            <span class="badge">IoT (MDPI)</span>
-          </div>
+      <!-- YOLO-RAW -->
+      <div class="pub-item">
+        <div class="pub-thumb">
+          <img src="images/publications/yolo-raw.png" alt="YOLO-RAW architecture figure" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="pub-info">
+          <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/10976436" target="_blank" rel="noopener">YOLO-RAW: Advancing UAV Detection with Robustness to Adverse Weather Conditions</a></div>
+          <p class="pub-authors"><strong>Adnan Munir</strong>, Abdul Jabbar Siddiqui, M. Shamim Hossain, Aiman El-Maleh</p>
+          <p class="pub-venue">IEEE Transactions on Intelligent Transportation Systems (T-ITS), 2025 <span class="badge badge-q1">Q1</span></p>
+          <p class="pub-links"><a href="https://ieeexplore.ieee.org/document/10976436" target="_blank" rel="noopener">paper</a></p>
+        </div>
+      </div>
+
+      <!-- IoT XGBoost -->
+      <div class="pub-item">
+        <div class="pub-thumb">
+          <img src="images/publications/quantized-xgboost.png" alt="Quantized XGBoost botnet detection figure" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="pub-info">
           <div class="pub-title"><a href="https://doi.org/10.3390/iot6040070" target="_blank" rel="noopener">Lightweight Quantized XGBoost for Botnet Detection in Resource-Constrained IoT Networks</a></div>
-          <p class="pub-authors">Rauf Ali Khan, M., Barnawi, A. Y., <strong>Munir, A.</strong>, Alsalman, Z., Satan Sanunga, D. M.</p>
+          <p class="pub-authors">M. Rauf Ali Khan, Abdulaziz Y. Barnawi, <strong>Adnan Munir</strong>, Zainab Alsalman, D. M. Satan Sanunga</p>
+          <p class="pub-venue">IoT (MDPI), 2025</p>
+          <p class="pub-links"><a href="https://doi.org/10.3390/iot6040070" target="_blank" rel="noopener">paper</a></p>
         </div>
+      </div>
 
-        <div class="pub-item">
-          <div class="pub-badges">
-            <span class="badge">2020</span>
-            <span class="badge">Sensors</span>
-            <span class="badge badge-q2">Q2</span>
-          </div>
-          <div class="pub-title"><a href="https://doi.org/10.3390/s20020548" target="_blank" rel="noopener">RDSP: Rapidly Deployable Wireless Ad Hoc System for Post-Disaster Management</a></div>
-          <p class="pub-authors">Khan, A., <strong>Munir, A.</strong>, Kaleem, Z., Muhammad, F. U., Nkenyereye, L., Shah, S., Nguyen, L. D., Islam, S. M. R., Kwak, K.-S.</p>
+      <!-- Drones -->
+      <div class="pub-item">
+        <div class="pub-thumb">
+          <img src="images/publications/drones-weather.png" alt="UAV detection under adverse weather figure" loading="lazy" onerror="this.style.display='none'">
         </div>
-      </details>
+        <div class="pub-info">
+          <div class="pub-title"><a href="https://doi.org/10.3390/drones8110638" target="_blank" rel="noopener">Impact of Adverse Weather and Image Distortions on Vision-based UAV Detection: A Performance Evaluation of Deep Learning Models</a></div>
+          <p class="pub-authors"><strong>Adnan Munir</strong>, Abdul Jabbar Siddiqui, Saeed Anwar, Ahmad H. Khan, Atiq Rehman</p>
+          <p class="pub-venue">Drones, 2024 <span class="badge badge-q1">Q1</span></p>
+          <p class="pub-links"><a href="https://doi.org/10.3390/drones8110638" target="_blank" rel="noopener">paper</a></p>
+        </div>
+      </div>
+
+      <!-- R-RDSP -->
+      <div class="pub-item">
+        <div class="pub-thumb">
+          <img src="images/publications/r-rdsp.png" alt="R-RDSP system figure" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="pub-info">
+          <div class="pub-title"><a href="https://doi.org/10.3390/s24227259" target="_blank" rel="noopener">R-RDSP: Reliable and Rapidly Deployable Wireless Ad Hoc System for Post-Disaster Management over DDS</a></div>
+          <p class="pub-authors">Bilal Jan, <strong>Adnan Munir</strong>, Ahmad H. Khan, Atiq Khan, Basem M. Al-Madani</p>
+          <p class="pub-venue">Sensors, 2024 <span class="badge badge-q2">Q2</span></p>
+          <p class="pub-links"><a href="https://doi.org/10.3390/s24227259" target="_blank" rel="noopener">paper</a></p>
+        </div>
+      </div>
+
+      <!-- RDSP -->
+      <div class="pub-item">
+        <div class="pub-thumb">
+          <img src="images/publications/rdsp.png" alt="RDSP system figure" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="pub-info">
+          <div class="pub-title"><a href="https://doi.org/10.3390/s20020548" target="_blank" rel="noopener">RDSP: Rapidly Deployable Wireless Ad Hoc System for Post-Disaster Management</a></div>
+          <p class="pub-authors">Atiq Khan, <strong>Adnan Munir</strong>, Zaib Kaleem, Fazal-Ur Muhammad, Lewis Nkenyereye, Sajjad Shah, Long D. Nguyen, S. M. Riazul Islam, Kyung-Sup Kwak</p>
+          <p class="pub-venue">Sensors, 2020 <span class="badge badge-q2">Q2</span></p>
+          <p class="pub-links"><a href="https://doi.org/10.3390/s20020548" target="_blank" rel="noopener">paper</a></p>
+        </div>
+      </div>
+
     </section>
 
     <!-- Research Focus -->
@@ -789,17 +846,16 @@
     </section>
 
     <!-- Degrees & Extracurricular Links -->
-<section id="degrees">
-  <h2 class="section-heading">
-    <a href="courses.html">
-      Degrees &amp; Courses ↗
-    </a>
-  </h2>
-  <p>View detailed graduate coursework, PhD specialization subjects, and academic transcripts on the <a href="./courses.html" style="color: var(--accent); font-weight: 600; text-decoration: underline;">Courses Page ↗</a>.</p>
-</section>
-      
+    <section id="degrees">
+      <h2 class="section-heading">
+        <a href="courses.html">
+          Degrees &amp; Courses ↗
+        </a>
+      </h2>
+      <p>View detailed graduate coursework, PhD specialization subjects, and academic transcripts on the <a href="./courses.html" style="color: var(--accent); font-weight: 600; text-decoration: underline;">Courses Page ↗</a>.</p>
+
       <p style="margin-top: 14px;">
-        Explore leadership and volunteer community engagements on the 
+        Explore leadership and volunteer community engagements on the
         <a href="https://sites.google.com/view/adnanmunir/extra-curricular-activities" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600; text-decoration: underline;">
           Extra-Curricular Activities page ↗
         </a>.
@@ -841,7 +897,7 @@
       <h2>Get in touch</h2>
       <p>Feel free to reach out for research discussions, collaborations, or questions:</p>
       <a class="email-link" href="mailto:adnanmunir294@gmail.com">adnanmunir294@gmail.com</a>
-      
+
       <div class="foot-bottom">
         <span>Linköping, Sweden</span>
         <div>
